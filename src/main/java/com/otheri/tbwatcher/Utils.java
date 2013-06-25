@@ -110,9 +110,11 @@ public class Utils {
 		File seedRoot = new File(SEED_ROOT);
 		ArrayList<Seed> ret = new ArrayList<Seed>();
 		File[] files = seedRoot.listFiles();
-		for (File file : files) {
-			Seed seed = readSeed(file);
-			ret.add(seed);
+		if (files != null) {
+			for (File file : files) {
+				Seed seed = readSeed(file);
+				ret.add(seed);
+			}
 		}
 		return ret;
 	}

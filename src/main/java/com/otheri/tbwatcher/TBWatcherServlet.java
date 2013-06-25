@@ -246,6 +246,7 @@ public class TBWatcherServlet extends HttpServlet {
 			resp = oopService.execute(req);
 
 		} catch (InvocationTargetException ite) {
+			ite.printStackTrace();
 			resp = MessageUtils.failure(req, ite.getTargetException().toString());
 		} catch (Exception e) {
 			e.printStackTrace();
