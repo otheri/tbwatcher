@@ -1,0 +1,60 @@
+
+<div class="well">
+	<input type="text" class="input-medium" placeholder="Seed Url"
+		ng-model="seedUrl"> <input type="text" class="input-medium"
+		placeholder="Seed Description" ng-model="seedDesc">
+	<button class="btn" ng-click="newSeed()">Add Seed</button>
+</div>
+
+<div class="well">
+	<div>
+		<!--Search-->
+
+		<input class="input-medium" type="text" placeholder="filter"
+			ng-model="query"> <select class="span2" ng-model="orderProp">
+			<option value="name">Alphabetical</option>
+			<option value="age">Newest</option>
+		</select>
+	</div>
+	<div>
+		<!--Seed List-->
+		<ul class="seeds">
+
+			<li ng-repeat="seed in seeds" ng-init="compare(seed)"><a
+				ng-href="{{seed.url}}" target="_blank"> <img class="icon"
+					ng-src="{{seed.imgUrl}}"></img>
+			</a> <a class="remove" href="" ng-click="removeSeed(seed.url)"><i
+					class="icon-remove"></i></a>
+
+				<div class="label label-inverse">{{seed.desc}}</div>
+
+				<div class="label" ng-class="{true: 'label-warning', false: 'label-success'}[seed.compare.namePair.changed]"
+					title="{{seed.compare.namePair.oldValue}}">{{seed.compare.namePair.newValue}}</div>
+				<button class="btn"
+					ng-click="saveCurrentSample(seed.compare.currSample)">Save
+					Current Sample</button>
+				<ul class="skus">
+					<li ng-repeat="pair in seed.compare.skuPairs">
+		
+					<!-- 新建则显示星星符号 -->
+					<img class="icon-star" ng-show="pair.skuFlg == 3"></img>
+					<!-- 删除则显示删除符号 -->
+					<img class="icon-remove" ng-show="pair.skuFlg == 2"></img>
+					<span
+						class="badge" ng-class="{true: 'label-warning', false: 'label-success'}[pair.priceChanged]" title="{{pair.oldPrice}}">{{pair.newPrice}}</span>
+					<span
+						class="badge" ng-class="{true: 'label-warning', false: 'label-success'}[pair.stockChanged]"  title="{{pair.oldStock}}">{{pair.newStock}}</span></li>
+			
+				</ul>
+				</li>
+
+		</ul>
+
+	</div>
+	<div>
+		<!--Seed Count-->
+
+		<p>Total number of seeds: {{seeds.length}}</p>
+	</div>
+
+</div>

@@ -1,0 +1,24 @@
+.seeds li {
+	overflow: hidden;
+}
+
+.seeds li:hover {
+	overflow: hidden;
+	background-color: #EEE;
+}
+
+.seeds .icon {
+	padding: 8px;
+	float: left;
+	width: 100px;
+	height: 100px;
+}
+
+.seeds .remove {
+	float: right;
+}
+
+.seeds .skus li{
+	float: left;
+	padding: 4px 8px 4px 8px;
+}
